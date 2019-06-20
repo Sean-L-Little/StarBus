@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Star Raspberry</string>
+    <string name="text_main">Mes Arrêts</string>
+    <string name="button_slot_1">Modifier</string>
+    <string name="text_lignes">Choisissez une ligne</string>
+    <string name="refreshButton">Réinitialiser</string>
+    <string name="text_directions">Choisissez une direction</string>
+    <string name="text_arrets">Choisissez un arrêt</string>
+    <string name="text_button_envoyer">Envoyer</string>
+    <string name="text_slot2">Votre deuxième requête ici</string>
+    <string name="text_slot1">Votre première requête ici</string>
+    <string name="text_slot3">Votre troisième requête ici</string>
+    <string name="text_button_sup">Supprimer</string>
+</resources>
