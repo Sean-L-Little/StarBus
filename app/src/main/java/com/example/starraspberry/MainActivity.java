@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_RESULT_2 = 2;
     private static final int CODE_RESULT_3 = 3;
 
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute(request1);
 
-        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPref.edit();
+        editor = sharedPref.edit();
         editor.putString("savedSlot1", request1);
         editor.commit();
 
@@ -147,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute(request2);
 
-        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPref.edit();
+        editor = sharedPref.edit();
         editor.putString("savedSlot2", request2);
         editor.commit();
 
@@ -160,9 +163,9 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute(request3);
 
-        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPref.edit();
+        editor = sharedPref.edit();
         editor.putString("savedSlot3", request3);
         editor.commit();
 
@@ -174,6 +177,12 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/0");
 
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+
+        editor = sharedPref.edit();
+        editor.remove("savedSlot1");
+        editor.commit();
+
     }
 
     public void sup2(View view){
@@ -181,12 +190,24 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/1");
 
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+
+        editor = sharedPref.edit();
+        editor.remove("savedSlot2");
+        editor.commit();
+
     }
 
     public void sup3(View view){
         textSlot3.setText("Votre troisième requête ici");
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/2");
+
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+
+        editor = sharedPref.edit();
+        editor.remove("savedSlot3");
+        editor.commit();
 
     }
 
