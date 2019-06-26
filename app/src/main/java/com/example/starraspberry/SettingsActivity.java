@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         String[] tokens = ipAddress.split("\\.");
         int i;
 
-        if (tokens.length != 4) { return false; }
+        if (tokens.length != 4)  return false;
 
         for (String str : tokens) {
             try {
@@ -46,7 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
             }catch (NumberFormatException | NullPointerException nfe) {
                 return false;
             }
-            if ((i < 0) || (i > 255)) { return false; }
+            if ((i < 0) || (i > 255))  return false;
         }
 
         return true;
