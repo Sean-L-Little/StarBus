@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/launch_bus_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".LignesActivity"
             android:parentActivityName=".MainActivity" />

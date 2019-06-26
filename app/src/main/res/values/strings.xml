@@ -11,4 +11,9 @@
     <string name="text_slot1">Votre première requête ici</string>
     <string name="text_slot3">Votre troisième requête ici</string>
     <string name="text_button_sup">Supprimer</string>
+    <string name="text_ip">IP Réseau:</string>
+    <string name="text_port">Port:</string>
+    <string name="edit_text_ip">Entrez l\'IP du Réseau</string>
+    <string name="edit_text_port">Entrez le Port à Utiliser</string>
+    <string name="text_enregistrer">Enregistrer</string>
 </resources>

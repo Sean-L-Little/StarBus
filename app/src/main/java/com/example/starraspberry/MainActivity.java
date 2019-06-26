@@ -7,17 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private String request;
 
-    private static final String SERVER_IP = "85.170.143.208"; //server IP address
-    private static final int SERVER_PORT = 4444;
+    private static String SERVER_IP = ""; //server IP address
+    private static int SERVER_PORT = -1;
 
     private TextView textSlot1;
     private TextView textSlot2;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+
+    public static boolean succesEnvoi=false;
 
 
     @Override
@@ -50,11 +54,16 @@ public class MainActivity extends AppCompatActivity {
         String savedSlot2= sharedPref.getString("savedSlot2", null);
         String savedSlot3= sharedPref.getString("savedSlot3", null);
 
+        String savedIP= sharedPref.getString("savedIP", null);
+        String savedPort= sharedPref.getString("savedPort",null);
+
+
         if(savedSlot1!=null) textSlot1.setText(makeNiceString(savedSlot1));
         if(savedSlot2!=null) textSlot2.setText(makeNiceString(savedSlot2));
         if(savedSlot3!=null) textSlot3.setText(makeNiceString(savedSlot3));
 
-
+        if(savedIP!=null&&SettingsActivity.validateIPAddress(savedIP)) SERVER_IP=savedIP;
+        if(savedPort!=null&& SettingsActivity.validatePort(savedPort)) SERVER_PORT = Integer.parseInt(savedPort);
 
 
     }
@@ -129,45 +138,61 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void parametres(View view) {
+
+        Intent intent = new Intent(this, SettingsActivity.class);
+
+        startActivity(intent);
+    }
+
+
 
 
 
     public void sendData1(View view){
+        if(request1!=null) {
+            BackgroundTask backgroundTask = new BackgroundTask();
+            backgroundTask.execute(request1);
 
-        BackgroundTask backgroundTask = new BackgroundTask();
-        backgroundTask.execute(request1);
+            sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
-
-        editor = sharedPref.edit();
-        editor.putString("savedSlot1", request1);
-        editor.commit();
-
+            editor = sharedPref.edit();
+            editor.putString("savedSlot1", request1);
+            editor.commit();
+        }else{
+            Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void sendData2(View view){
+        if(request2!=null) {
+            BackgroundTask backgroundTask = new BackgroundTask();
+            backgroundTask.execute(request2);
 
-        BackgroundTask backgroundTask = new BackgroundTask();
-        backgroundTask.execute(request2);
+            sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
-
-        editor = sharedPref.edit();
-        editor.putString("savedSlot2", request2);
-        editor.commit();
+            editor = sharedPref.edit();
+            editor.putString("savedSlot2", request2);
+            editor.commit();
+        }else{
+            Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     public void sendData3(View view){
+        if(request3!=null) {
+            BackgroundTask backgroundTask = new BackgroundTask();
+            backgroundTask.execute(request3);
 
-        BackgroundTask backgroundTask = new BackgroundTask();
-        backgroundTask.execute(request3);
+            sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
-
-        editor = sharedPref.edit();
-        editor.putString("savedSlot3", request3);
-        editor.commit();
+            editor = sharedPref.edit();
+            editor.putString("savedSlot3", request3);
+            editor.commit();
+        }else{
+            Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -177,11 +202,16 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/0");
 
-        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        request1=null;
 
-        editor = sharedPref.edit();
-        editor.remove("savedSlot1");
-        editor.commit();
+        sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        if(succesEnvoi) {
+            editor = sharedPref.edit();
+            editor.remove("savedSlot1");
+            editor.commit();
+        }else{
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -190,11 +220,21 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/1");
 
+        request2=null;
+
+
         sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-        editor = sharedPref.edit();
-        editor.remove("savedSlot2");
-        editor.commit();
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
+        if(succesEnvoi) {
+            editor = sharedPref.edit();
+            editor.remove("savedSlot2");
+            editor.commit();
+
+        }else{
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -203,12 +243,16 @@ public class MainActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/2");
 
+        request3=null;
+
         sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
-
-        editor = sharedPref.edit();
-        editor.remove("savedSlot3");
-        editor.commit();
-
+        if(succesEnvoi) {
+            editor = sharedPref.edit();
+            editor.remove("savedSlot3");
+            editor.commit();
+        }else{
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -223,14 +267,15 @@ public class MainActivity extends AppCompatActivity {
 
             try{
                 String message = voids[0];
-                socket= new Socket(SERVER_IP,SERVER_PORT);
 
-                writer = new PrintWriter(socket.getOutputStream());
-                writer.write(message);
-                writer.flush();
-                writer.close();
+                    socket = new Socket(SERVER_IP, SERVER_PORT);
 
-            }
+                    writer = new PrintWriter(socket.getOutputStream());
+                    writer.write(message);
+                    writer.flush();
+                    writer.close();
+
+                }
             catch(IOException e){
                 e.printStackTrace();
             }
