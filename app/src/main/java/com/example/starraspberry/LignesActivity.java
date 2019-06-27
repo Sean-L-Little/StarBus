@@ -64,7 +64,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
      */
     private static String[] removeNull(String[] a) {
 
-        ArrayList<String> removedNull = new ArrayList<String>();
+        ArrayList<String> removedNull = new ArrayList<>();
         for (String str : a)
             if (str != null)
                 removedNull.add(str);
@@ -95,6 +95,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
                         try {
                             listBus=parserLignes(response);
 
+                            assert listBus != null;
                             listBus = removeNull(listBus);
 
                             listLignes.addAll(Arrays.asList(listBus));
@@ -114,7 +115,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
         }){
 
             public Map<String, String> getHeaders() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("Ocp-Apim-Subscription-Key", accessKey);
                 return params;
             }
@@ -160,7 +161,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
         }){
 
             public Map<String, String> getHeaders() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("Ocp-Apim-Subscription-Key", accessKey);
                 return params;
             }
@@ -191,6 +192,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
 
                             listArr=parserArrets(response);
 
+                            assert listArr != null;
                             listArr = removeNull(listArr);
 
                             listArrets.clear();
@@ -212,7 +214,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
         }){
 
             public Map<String, String> getHeaders() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("Ocp-Apim-Subscription-Key", accessKey);
                 return params;
             }
