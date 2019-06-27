@@ -30,7 +30,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIP" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIP"
+         />
 
     <EditText
         android:id="@+id/editTextPort"
@@ -46,7 +47,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPort" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPort"
+        />
 
     <TextView
         android:id="@+id/textViewIP"
@@ -59,7 +61,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

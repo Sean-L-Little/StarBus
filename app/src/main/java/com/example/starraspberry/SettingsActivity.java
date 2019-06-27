@@ -12,9 +12,6 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText editIP;
     private EditText editPort;
 
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,18 +58,16 @@ public class SettingsActivity extends AppCompatActivity {
             return false;
         }
 
-        if(i<0 || i>10000) return false;
-
-        return true;
+        return (i>=0 && i<65535);
 
     }
 
     public void save(View view){
 
 
-            sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
-            editor = sharedPref.edit();
+        SharedPreferences.Editor editor = sharedPref.edit();
 
             if(validateIPAddress(editIP.getText().toString())) {
                 editor.putString("savedIP", editIP.getText().toString());
@@ -88,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "Port non conforme", Toast.LENGTH_SHORT).show();
             }
-            editor.commit();
+            editor.apply();
 
 
     }

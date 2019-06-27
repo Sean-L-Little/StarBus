@@ -54,7 +54,7 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.View
 
         @Override
         public void onClick(View view) {
-            if (dClickListener != null) dClickListener.onDirectionClick(view, getAdapterPosition());
+            if (dClickListener != null) dClickListener.onDirectionClick(getAdapterPosition());
         }
     }
 
@@ -70,6 +70,6 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.View
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onDirectionClick(View view, int position);
+        void onDirectionClick(int position);
     }
 }

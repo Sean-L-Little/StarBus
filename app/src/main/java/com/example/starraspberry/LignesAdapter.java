@@ -54,7 +54,7 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
 
         @Override
         public void onClick(View view) {
-            if (lClickListener != null) lClickListener.onLignesClick(view, getAdapterPosition());
+            if (lClickListener != null) lClickListener.onLignesClick(getAdapterPosition());
         }
     }
 
@@ -70,6 +70,6 @@ public class LignesAdapter extends RecyclerView.Adapter<LignesAdapter.ViewHolder
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onLignesClick(View view, int position);
+        void onLignesClick(int position);
     }
 }

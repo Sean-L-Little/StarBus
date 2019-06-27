@@ -12,11 +12,10 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String request;
+    private String request=null;
 
     private static String SERVER_IP = ""; //server IP address
     private static int SERVER_PORT = -1;
@@ -33,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int CODE_RESULT_2 = 2;
     private static final int CODE_RESULT_3 = 3;
 
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
 
-    public static boolean succesEnvoi=false;
+    private static boolean succesEnvoi=false;
 
 
     @Override
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String makeNiceString(String request){
+    private String makeNiceString(String request){
         String[] strings = request.split("/");
 
         return "Ligne: "+strings[1]+"\nDirection: "+ strings[2]+"\nArret: "+strings[3];
@@ -150,7 +149,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sendData1(View view){
-        if(request1!=null) {
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
+        if(request1!=null&&succesEnvoi) {
             BackgroundTask backgroundTask = new BackgroundTask();
             backgroundTask.execute(request1);
 
@@ -158,14 +159,20 @@ public class MainActivity extends AppCompatActivity {
 
             editor = sharedPref.edit();
             editor.putString("savedSlot1", request1);
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 1 envoyé avec succès", Toast.LENGTH_LONG).show();
+        }else if(!succesEnvoi){
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void sendData2(View view){
-        if(request2!=null) {
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
+        if(request2!=null&&succesEnvoi) {
             BackgroundTask backgroundTask = new BackgroundTask();
             backgroundTask.execute(request2);
 
@@ -173,7 +180,11 @@ public class MainActivity extends AppCompatActivity {
 
             editor = sharedPref.edit();
             editor.putString("savedSlot2", request2);
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 2 envoyé avec succès", Toast.LENGTH_LONG).show();
+        }else if(!succesEnvoi){
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
         }
@@ -181,7 +192,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendData3(View view){
-        if(request3!=null) {
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
+        if(request3!=null&&succesEnvoi) {
             BackgroundTask backgroundTask = new BackgroundTask();
             backgroundTask.execute(request3);
 
@@ -189,7 +202,11 @@ public class MainActivity extends AppCompatActivity {
 
             editor = sharedPref.edit();
             editor.putString("savedSlot3", request3);
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 3 envoyé avec succès", Toast.LENGTH_LONG).show();
+        }else if(!succesEnvoi){
+            Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Echec envoi, Requête vide", Toast.LENGTH_SHORT).show();
         }
@@ -198,17 +215,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sup1(View view){
-        textSlot1.setText("Votre première requête ici");
+
+        textSlot1.setText(R.string.text_slot1);
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/0");
 
         request1=null;
 
         sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
         if(succesEnvoi) {
             editor = sharedPref.edit();
             editor.remove("savedSlot1");
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 1 supprimé avec succès", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
         }
@@ -216,12 +239,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sup2(View view){
-        textSlot2.setText("Votre deuxième requête ici");
+        textSlot2.setText(R.string.text_slot2);
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/1");
 
         request2=null;
-
 
         sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
 
@@ -230,7 +252,9 @@ public class MainActivity extends AppCompatActivity {
         if(succesEnvoi) {
             editor = sharedPref.edit();
             editor.remove("savedSlot2");
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 2 supprimé avec succès", Toast.LENGTH_LONG).show();
 
         }else{
             Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_SHORT).show();
@@ -239,17 +263,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sup3(View view){
-        textSlot3.setText("Votre troisième requête ici");
+        textSlot3.setText(R.string.text_slot3);
         BackgroundTask backgroundTask = new BackgroundTask();
         backgroundTask.execute("sup/2");
 
         request3=null;
 
         sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+
+        succesEnvoi=(SettingsActivity.validatePort(Integer.toString(SERVER_PORT))&&SettingsActivity.validateIPAddress(SERVER_IP));
+
         if(succesEnvoi) {
             editor = sharedPref.edit();
             editor.remove("savedSlot3");
-            editor.commit();
+            editor.apply();
+
+            Toast.makeText(this, "Requête 3 supprimé avec succès", Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(this, "Echec envoi, Port ou IP mal configuré", Toast.LENGTH_LONG).show();
         }

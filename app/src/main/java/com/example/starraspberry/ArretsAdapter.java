@@ -54,7 +54,7 @@ public class ArretsAdapter extends RecyclerView.Adapter<ArretsAdapter.ViewHolder
 
         @Override
         public void onClick(View view) {
-            if (aClickListener != null) aClickListener.onArretsClick(view, getAdapterPosition());
+            if (aClickListener != null) aClickListener.onArretsClick(getAdapterPosition());
         }
     }
 
@@ -70,6 +70,6 @@ public class ArretsAdapter extends RecyclerView.Adapter<ArretsAdapter.ViewHolder
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onArretsClick(View view, int position);
+        void onArretsClick(int position);
     }
 }
