@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    class BackgroundTask extends AsyncTask<String,Void, Void> {
+    static class BackgroundTask extends AsyncTask<String,Void, Void> {
 
 
         Socket socket;
