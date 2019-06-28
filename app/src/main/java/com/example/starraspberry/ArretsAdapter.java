@@ -16,13 +16,14 @@ public class ArretsAdapter extends RecyclerView.Adapter<ArretsAdapter.ViewHolder
     private final LayoutInflater aInflater;
     private ItemClickListener aClickListener;
 
-    // data is passed into the constructor
+    // Les données sont envoyés au constructeur
     ArretsAdapter(Context context, List<String> data) {
         this.aInflater = LayoutInflater.from(context);
         this.aData = data;
     }
 
-    // inflates the row layout from xml when needed
+    //Gonfle les rangées de l'xml quand on en a besoin
+    // Au début nous voulions mettre des Images pour chaque ligne mais ça s'est averé pas possible
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,27 +31,26 @@ public class ArretsAdapter extends RecyclerView.Adapter<ArretsAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+    //Relie les données avec le TextView de chaque rangée
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String str = aData.get(position);
         holder.myTextView.setText(str);
     }
 
-    // total number of rows
+    // Nombre total de rangées
     @Override
     public int getItemCount() {
         return aData.size();
     }
 
-
-    // stores and recycles views as they are scrolled off screen
+    //garde en mémoire et recycle les Views quand elles ne sont plus sur l'écran
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView myTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            myTextView = itemView.findViewById(R.id.elementsRecycle);
             itemView.setOnClickListener(this);
         }
 
@@ -60,17 +60,16 @@ public class ArretsAdapter extends RecyclerView.Adapter<ArretsAdapter.ViewHolder
         }
     }
 
-    // convenience method for getting data at click position
+    // Methode pour récuperer un élément
     String getItem(int id) {
         return aData.get(id);
     }
 
-    // allows clicks events to be caught
+    // Permets les clickevent
     void setClickListener(ItemClickListener itemClickListener) {
         this.aClickListener = itemClickListener;
     }
 
-    // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onArretsClick(int position);
     }

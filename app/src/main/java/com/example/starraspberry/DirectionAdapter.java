@@ -16,13 +16,13 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.View
     private final LayoutInflater dInflater;
     private ItemClickListener dClickListener;
 
-    // data is passed into the constructor
+    // Les données sont envoyés au constructeur
     DirectionAdapter(Context context, List<String> data) {
         this.dInflater = LayoutInflater.from(context);
         this.dData = data;
     }
-
-    // inflates the row layout from xml when needed
+    //Gonfle les rangées de l'xml quand on en a besoin
+    // Au début nous voulions mettre des Images pour chaque ligne mais ça s'est averé pas possible
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,27 +30,27 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.View
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+    //Relie les données avec le TextView de chaque rangée
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String str = dData.get(position);
         holder.myTextView.setText(str);
     }
 
-    // total number of rows
+    // Nombre total de rangées
     @Override
     public int getItemCount() {
         return dData.size();
     }
 
 
-    // stores and recycles views as they are scrolled off screen
+    //garde en mémoire et recycle les Views quand elles ne sont plus sur l'écran
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final TextView myTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            myTextView = itemView.findViewById(R.id.elementsRecycle);
             itemView.setOnClickListener(this);
         }
 
@@ -60,17 +60,16 @@ public class DirectionAdapter extends RecyclerView.Adapter<DirectionAdapter.View
         }
     }
 
-    // convenience method for getting data at click position
+    // Methode pour récuperer un élément
     String getItem(int id) {
         return dData.get(id);
     }
 
-    // allows clicks events to be caught
+    // Permets les clickevent
     void setClickListener(ItemClickListener itemClickListener) {
         this.dClickListener = itemClickListener;
     }
 
-    // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onDirectionClick(int position);
     }

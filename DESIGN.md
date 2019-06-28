@@ -47,3 +47,9 @@ qu'elle reçoit à la Raspberry Pi pour qu'elle l'affiche.
 
 Nous avons deux EditTexts qui permettent de modifier ces paramètres qui sont ensuite enregistrés dans les préferences pour qu'on ne doive pas
 les remettre à chaque fois qu'on ouvre l'appli
+
+*****************************************************************************************************************************
+ArretsAdapter, LignesAdapter et DirectionAdapter:
+
+3 classes très similaires qui adaptent la liste des éléments dans le RecyclerView avec un ajout d'un ClickListener
+afin de prendre en compte les clics sur les differents éléments de la liste.
