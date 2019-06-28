@@ -57,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /**Methode pour déterminer si le string est un Port
      *
-     * @param port
+     * @param port Le numéro de port en String
      * @return C'est bien un Port ?
      */
     public static boolean validatePort(String port){
@@ -75,7 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /**Pour enregistrer en cliquant sur "Sauvgarder"
      *
-     * @param view
+     * @param view Le view
      */
     public void save(View view){
 

@@ -201,6 +201,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit"
-        android:contentDescription="Paramètres" />
+        android:contentDescription="@string/text_parametres" />
 
 </android.support.constraint.ConstraintLayout>

@@ -85,13 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Quand on recoit les données des Lignes Activity
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param resultIntent
-     */
+
     protected void onActivityResult(int requestCode, int resultCode, Intent resultIntent) {
         // Verifier que c'est la bonne requête
         if (requestCode == CODE_RESULT_1) {
@@ -127,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Découpe une requete pour qu'elle soit plus lisible
      *
-     * @param request
+     * @param request Requete à modifier
      * @return Requete sous forme lisible
      */
     private String makeNiceString(String request) {
@@ -141,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
      * Lance LignesActivity avec intention de renvoyer la requete
      * Quand on clique sur le bouton "MODIFIER"
      *
-     * @param view
+     * @param view Le view
      */
     public void modifierSlotUn(View view) {
 
@@ -158,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
      * Lance LignesActivity avec intention de renvoyer la requete
      * Quand on clique sur le bouton "MODIFIER"
      *
-     * @param view
+     * @param view Le view
      */
     public void modifierSlotDeux(View view) {
 
@@ -175,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
      * Lance LignesActivity avec intention de renvoyer la requete
      * Quand on clique sur le bouton "MODIFIER"
      *
-     * @param view
+     * @param view Le view
      */
     public void modifierSlotTrois(View view) {
 
@@ -191,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
      * Lance l'activité paramètres associé au bouton paramètres
      * Qui change l'IP et le Port
      *
-     * @param view
+     * @param view Le view
      */
     public void parametres(View view) {
 
@@ -205,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
      * Envoi les données du slot 1 au serveur à l'IP donnée et sur le Port donnée au serveur
      * Quand on appui sur le bouton "ENVOYER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sendData1(View view) {
 
@@ -236,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
      * Envoi les données du slot 2 au serveur à l'IP donnée et sur le Port donnée au serveur
      * Quand on appui sur le bouton "ENVOYER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sendData2(View view) {
         succesEnvoi = (SettingsActivity.validatePort(Integer.toString(SERVER_PORT)) && SettingsActivity.validateIPAddress(SERVER_IP));
@@ -267,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
      * Envoi les données du slot 3 au serveur à l'IP donnée et sur le Port donnée au serveur
      * Quand on appui sur le bouton "ENVOYER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sendData3(View view) {
         succesEnvoi = (SettingsActivity.validatePort(Integer.toString(SERVER_PORT)) && SettingsActivity.validateIPAddress(SERVER_IP));
@@ -296,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
     /**Supprime la requete du slot 1 et envoie un message de suppression au server
      * Quand on appuie sur le bouton "SUPPRIMER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sup1(View view) {
 
@@ -330,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
     /**Supprime la requete du slot 2 et envoie un message de suppression au server
      * Quand on appuie sur le bouton "SUPPRIMER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sup2(View view) {
 
@@ -366,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
     /**Supprime la requete du slot 2 et envoie un message de suppression au server
      * Quand on appuie sur le bouton "SUPPRIMER"
      *
-     * @param view
+     * @param view Le view
      */
     public void sup3(View view) {
 

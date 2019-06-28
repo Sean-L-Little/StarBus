@@ -138,7 +138,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
             /**Ici on rajoute les éléments dans l'entete
              * Notamment la clé d'accès API
              *
-             * @return
+             * @return Header de la requete
              */
             public Map<String, String> getHeaders() {
                 Map<String, String> params = new HashMap<>();
@@ -249,7 +249,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
             /**Ici on rajoute les éléments dans l'entete
              * Notamment la clé d'accès API
              *
-             * @return
+             * @return Header de la requete
              */
             public Map<String, String> getHeaders() {
                 Map<String, String> params = new HashMap<>();
@@ -485,7 +485,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
     /**
      * Méthode pour renvoyer la requete à l'écran d'accueil pour pouvoir être transmise
      *
-     * @param view
+     * @param view Le view
      */
     public void envoyer(View view){
 
@@ -507,7 +507,7 @@ public class LignesActivity extends AppCompatActivity implements LignesAdapter.I
     /** Pour rafraîchir la liste des Lignes
      *  Supprime les choix déjà faites et remets la requête à zéro
      *
-     * @param view
+     * @param view Le view
      */
     public void refresh(View view) {
 
