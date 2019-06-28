@@ -1,6 +1,8 @@
 @TODO finish UML
 Pour l'application:
 
+//Regarder Sequence DesignApp.pdf pour un diagramme de sequence de l'application
+
 *****************************************************************************************************************************
 MainActivity: 
 
