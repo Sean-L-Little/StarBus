@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Méthode pour modifier les données dans le slot 1
      * Lance LignesActivity avec intention de renvoyer la requete
+     * Quand on clique sur le bouton "MODIFIER"
      *
      * @param view
      */
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Méthode pour modifier les données dans le slot 2
      * Lance LignesActivity avec intention de renvoyer la requete
+     * Quand on clique sur le bouton "MODIFIER"
      *
      * @param view
      */
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Méthode pour modifier les données dans le slot 3
      * Lance LignesActivity avec intention de renvoyer la requete
+     * Quand on clique sur le bouton "MODIFIER"
      *
      * @param view
      */
@@ -200,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Envoi les données du slot 1 au serveur à l'IP donnée et sur le Port donnée au serveur
+     * Quand on appui sur le bouton "ENVOYER"
      *
      * @param view
      */
@@ -230,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Envoi les données du slot 2 au serveur à l'IP donnée et sur le Port donnée au serveur
+     * Quand on appui sur le bouton "ENVOYER"
      *
      * @param view
      */
@@ -260,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Envoi les données du slot 3 au serveur à l'IP donnée et sur le Port donnée au serveur
+     * Quand on appui sur le bouton "ENVOYER"
      *
      * @param view
      */
@@ -288,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**Supprime la requete du slot 1 et envoie un message de suppression au server
+     * Quand on appuie sur le bouton "SUPPRIMER"
      *
      * @param view
      */
@@ -321,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     /**Supprime la requete du slot 2 et envoie un message de suppression au server
+     * Quand on appuie sur le bouton "SUPPRIMER"
      *
      * @param view
      */
@@ -356,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     /**Supprime la requete du slot 2 et envoie un message de suppression au server
+     * Quand on appuie sur le bouton "SUPPRIMER"
      *
      * @param view
      */
