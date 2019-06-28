@@ -1,4 +1,7 @@
-Pour l'application, il y a un fichier APK qui permets l'installation soit à partir d'une Machine Virtuel sur 
+*******************************************************************************************************************************
+**Pour l'application:** 
+
+Il y a un fichier APK qui permets l'installation soit à partir d'une Machine Virtuel sur 
 l'ordinateur ou bien à partir d'un appareil android mobile. Qui se trouve a cette adresse 
 
    **/StarBus/tree/master/app/release/app-release.apk**
@@ -16,3 +19,12 @@ Une fois chargé taper la ligne de commande
    **adb install filename.apk**
   
 Pour la charger du la machine virtuel
+*******************************************************************************************************************************
+
+**Pour le Server:**
+
+On peut éxecuter le code du Raspberry Pi direct sur un ordinateur, tout les fichiers le concernant se trouvent dans l'archive ZIP nommé
+
+**STARASPBERRY.zip**
+
+à la racine du projet.
