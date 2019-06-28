@@ -6,7 +6,7 @@ Using a router as a server and checking the bus times constantly with the Raspbe
 
 In this project we use 3 different technologies who all interact.
 
-First, the Raspberry Pi equipped with a LCD screen to display the next bus times and also the time, there are a maximum of 3 different bus stops on display with the times for the next 3 buses of a given line displyed. The Raspberry must have an internet connection to be able to access the online API.
+First, the Raspberry Pi equipped with a LCD screen to display the next bus times and also the time, there are a maximum of 3 different bus stops on display with the times for the next 3 buses of a given line displyed. The Raspberry must have an internet connection to be able to access the online API. **By default in the server code, the port is set to 4444**
 
 Secondly, the mobile phone who modifies the data that the Raspberry will use to search for the buses. We have to give a Slot, Line, Direction and Stop for each request. Which is sent to the server which relays this message to the Raspberry Pi. We can change the Server IP and the Port on which we send the information
 
