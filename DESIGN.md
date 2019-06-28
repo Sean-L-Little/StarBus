@@ -2,6 +2,7 @@
 Pour l'application:
 
 //Regarder Sequence DesignApp.pdf pour un diagramme de sequence de l'application
+//Regarder PhotoAppliStar.zip pour un fichier de screenshots de l'application
 
 *****************************************************************************************************************************
 MainActivity: 
