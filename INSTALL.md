@@ -27,4 +27,14 @@ On peut éxecuter le code du Raspberry Pi direct sur un ordinateur, tout les fic
 
 **STARASPBERRY.zip**
 
-à la racine du projet.
+à la racine du projet. Il faut la dézipper ensuite 
+ouvrir le terminal et se placer dans le dossier STARASPBERRY
+
+pour compiler le programme, entrez la commande:
+
+**javac -cp .:json-simple-1.1.jar**
+
+pour lancer le programme compilé, entrez la commande:
+
+**java -cp .:json-simple-1.1.jar Main**
+
