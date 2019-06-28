@@ -16,4 +16,5 @@
     <string name="edit_text_ip">Entrez l\'IP du Réseau</string>
     <string name="edit_text_port">Entrez le Port à Utiliser</string>
     <string name="text_enregistrer">Enregistrer</string>
+    <string name="text_selectionner">Selectionner</string>
 </resources>
