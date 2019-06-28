@@ -14,3 +14,10 @@ Thirdly, the server which in our case was an Internet Router to which the Raspbe
 
 
 We used 2 different IDEs to accomplish this, Android Studio for the mobile app and Atom for the Raspberry Pi code.
+
+**MEMBERS:**
+
+- BORIE Paul
+- LITTLE Sean
+- DEMONGEOT Nicolas
+- BALCOU Thomas
